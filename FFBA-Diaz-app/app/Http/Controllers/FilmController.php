@@ -30,5 +30,15 @@ class FilmController extends Controller
     }
 
 
+    public function film($id)
+    {
+        $response = Http::get("https://api.themoviedb.org/3/movie/{$id}", [
+
+        'api_key' => config('services.tmdb.api_key')]);
+
+        $film = $response->json();
+
+        return view('films.film', compact('film'));
+    }
 
 }
