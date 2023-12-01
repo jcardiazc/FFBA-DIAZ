@@ -7,12 +7,28 @@ use Illuminate\Support\Facades\Http;
 
 class FilmController extends Controller
 {
-    public function index()
+    /*public function index()
     {
         $response = Http::get("https://api.themoviedb.org/3/movie/popular?api_key=da30e671936115ccc8bb59d618f91d8d");
 
         $films = $response->json()['results'];
 
         return view('films.index', compact('films'));
+    }*/
+
+
+    
+    public function index()
+    {
+        $response = Http::get("https://api.themoviedb.org/3/movie/popular", [
+
+        'api_key' => config('services.tmdb.api_key')]);
+
+        $films = $response->json()['results'];
+
+        return view('films.index', compact('films'));
     }
+
+
+
 }
