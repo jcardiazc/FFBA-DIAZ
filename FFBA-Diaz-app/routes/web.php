@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/index', [FilmController::class, 'index']);
+
+Route::get('/film/{id}', [FilmController::class, 'film']);
