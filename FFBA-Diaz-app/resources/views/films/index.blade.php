@@ -6,7 +6,7 @@
    
    
    
-   @foreach ($films as $film)
+   @foreach ($dbFilms as $film)
       <div class="bg-gray-50 border border-gray-200 rounded p-6">
          <div class="flex">
             <img
