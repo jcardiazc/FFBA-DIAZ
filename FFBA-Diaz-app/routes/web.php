@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmController;
+use App\Http\Controllers\AdminFilmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,11 @@ Route::get('/index', [FilmController::class, 'index']);
 Route::get('/film/{id}', [FilmController::class, 'film']);
 
 Route::get('/fetch-store-films', [FilmController::class, 'fetchStoreFilms']);
+
+
+Route::get('/admin/films/index', [AdminFilmController::class, 'index']);
+
+Route::resource('admin/films', AdminFilmController::class);
+
+Route::delete('admin/films/{film}', [AdminFilmController::class, 'destroy'])->name('admin.films.destroy');
+

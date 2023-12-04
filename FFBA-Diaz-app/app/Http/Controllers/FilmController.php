@@ -43,19 +43,29 @@ class FilmController extends Controller
               );
            } 
         }
- 
+        
         foreach($films as $film){    
            $existingFilmData = Film::where('title', $film['title'])
                                 ->first();
-           
+
            if (!$existingFilmData) {  
+                
+                /*On récupère les détails de chaque film en faisant un appel à l'API externe, 
+                bien qu'il y ait des informations pour chaque film dans la liste 'films', 
+                certaines informations importantes manquent, telles que la 'homepage'par exemple.*/
+
+               $response = Http::get("https://api.themoviedb.org/3/movie/{$film['id']}", [
+               'api_key' => config('services.tmdb.api_key')]);
+               $filmX = $response->json();
+        
                Film::create([
-                 'title' => $film['title'],
-                 'overview'=> $film['overview'],
-                 'original_language'=> $film['original_language'],
-                 'release_date'=> $film['release_date'],
-                 'poster_path'=> $film['poster_path']
-              ]
+                 'title' => $filmX['title'],
+                 'overview'=> $filmX['overview'],
+                 'original_language'=> $filmX['original_language'],
+                 'release_date'=> $filmX['release_date'],
+                 'poster_path'=> $filmX['poster_path'],
+                 'homepage'=> $filmX['homepage'] 
+               ]
                );
  
                $retrievedFilm = Film::where('title', $film['title'])->first();
