@@ -13,12 +13,13 @@
              src="https://image.tmdb.org/t/p/w500/{{ $film['poster_path'] }}" 
              class="w-48 mr-6 mb-6" 
              alt="{{ $film['title'] }}">
+
+             <p class="text-3xl text-black-200 font-bold my-4">
+                {{ $film['title'] }}
+             </p>
+
         <ul class="flex">
-            <li
-                class="bg-primary text-white rounded-xl px-3 py-1 mr-2"
-            >
-            Title: {{ $film['title'] }}
-            </li>
+            
             <li
                 class="bg-primary text-white rounded-xl px-3 py-1 mr-2"
             >
@@ -41,7 +42,7 @@
         
         <div class="border border-gray-200 w-full mb-6"></div>
         <div>
-            <h3 class="text-3xl font-bold mb-4">
+            <h3 class="text-2xl font-bold mb-4">
                 Sinopsis
             </h3>
             <div class="text-lg space-y-6">

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->String('original_language');
             $table->String('release_date');
             $table->String('poster_path');
+            $table->String('homepage');
             $table->timestamps();
         });
     }

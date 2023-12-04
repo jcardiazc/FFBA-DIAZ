@@ -18,8 +18,8 @@ return new class extends Migration
         });
 
         Schema::create('film_genre', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Film::class)->constrained();
-            $table->foreignIdFor(\App\Models\Genre::class)->constrained();
+            $table->foreignIdFor(\App\Models\Film::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Genre::class)->constrained()->cascadeOndelete();
             $table->primary(['film_id','genre_id']);
         });
 

@@ -14,7 +14,8 @@ class Film extends Model
         'overview',
         'original_language',
         'release_date',
-        'poster_path'
+        'poster_path',
+        'homepage',
     ];
 
     public function genres(){
