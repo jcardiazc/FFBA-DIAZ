@@ -4,9 +4,9 @@
 
 <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
    
-   @unless (count($films) == 0) 
-
-   @foreach ($films as $film)
+   
+   
+   @foreach ($dbFilms as $film)
       <div class="bg-gray-50 border border-gray-200 rounded p-6">
          <div class="flex">
             <img
@@ -16,7 +16,7 @@
             />
             <div>
                <h3 class="text-4xl mb-3">
-                  <a href="film">{{ $film['title'] }}</a>
+                  <a href="/film/{{$film["id"]}}">{{ $film['title'] }}</a>
                </h3>
                <div >
                   <h4 class="text-2xl">Synopsis</h4>
@@ -29,7 +29,7 @@
        </div>
     @endforeach
 
-    @endunless
+  
           
     </div>
 @endsection
